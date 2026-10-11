@@ -1,0 +1,637 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>SYNT — Archives des Backrooms · Transmission récupérée</title>
+<style>
+:root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+html,body{height:100%;margin:0;background:#000;color:#fff;font-family:"Courier New",Courier,monospace}
+body{display:flex;align-items:center;justify-content:center}
+#s{position:relative;container-type:inline-size;width:min(100vw,177.78vh);aspect-ratio:16/9;background:#000;overflow:hidden;transition:background .3s}
+#s::before,#s::after{content:"";position:absolute;left:0;right:0;z-index:5;background:#000;height:11%;pointer-events:none}
+#s::before{top:0}#s::after{bottom:0}
+#g{position:absolute;inset:0;pointer-events:none;z-index:4;background:repeating-linear-gradient(0deg,rgba(0,0,0,.12) 0 1px,transparent 1px 3px),radial-gradient(ellipse at center,transparent 60%,rgba(0,0,0,.45))}
+#n{position:absolute;inset:0;width:100%;height:100%;opacity:.07;image-rendering:pixelated;pointer-events:none}
+#t{position:absolute;inset:0;padding:0 8cqw;display:flex;flex-direction:column;justify-content:center;font-size:2.6cqw;line-height:1.4;color:#fff;font-weight:bold;text-shadow:0 0 .8cqw #000;z-index:2}
+.l{margin:.4em 0;animation:in .6s both}
+@keyframes in{from{opacity:0}}
+#h{position:absolute;left:6cqw;right:6cqw;top:13%;display:flex;justify-content:space-between;font-size:2cqw;color:#fff;z-index:2}
+#h .r{color:#e11;animation:bl 1s steps(2) infinite}
+@keyframes bl{50%{opacity:0}}
+#k{display:none;position:absolute;left:0;right:0;bottom:11%;background:#b00;color:#fff;white-space:nowrap;overflow:hidden;font-size:2.1cqw;font-weight:bold;padding:.6cqw 0;z-index:3}
+#k span{display:inline-block;padding-left:100%;animation:tk 14s linear infinite}
+@keyframes tk{to{transform:translateX(-100%)}}
+.eas{background:#000}
+.doc{background:#111}.doc #t{color:#fff;text-shadow:0 0 .8cqw #000}
+.cam{background:#070707}.cam #n{opacity:.14}
+.news{background:#000}
+.lab{background:#061219}
+.red{color:#ff3030}
+.big{font-size:5.2cqw;text-align:center;letter-spacing:.25em}
+.gl{animation:gl .25s steps(2) infinite}
+@keyframes gl{0%{transform:translate(0)}50%{transform:translate(-.6cqw,.3cqw);text-shadow:.5cqw 0 #f00}}
+.tag{display:inline-block;background:#c00;color:#fff;padding:.2em .6em;font-weight:bold}
+.synt{color:#5fe3ff}
+.yellow{color:#f7e98f}
+#go{position:absolute;inset:0;z-index:6;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2.5cqw;background:#000;color:#fff;text-align:center}
+#go b{font-size:4.2cqw;letter-spacing:.2em;font-weight:normal}
+#go p{font-size:2cqw;margin:0;max-width:72cqw;line-height:1.5;opacity:.85}
+#go button{background:none;border:1px solid #fff;color:#fff;font:inherit;font-size:2.2cqw;padding:1.1cqw 4cqw;cursor:pointer;margin:.35cqw}
+#go button:hover,#go button:focus-visible{background:#c00;color:#fff;outline:none}
+#go .sub{font-size:1.7cqw;opacity:.6;margin-top:1cqw}
+#introWarning{position:absolute;inset:0;z-index:10;display:none;background:#000;align-items:center;justify-content:center;opacity:1;transition:opacity .7s ease;pointer-events:none}
+#introWarning.show{display:flex}
+#introWarning.hide{opacity:0}
+#introWarning .box{max-width:70cqw;text-align:center;font-size:2.4cqw;line-height:1.5;border:2px solid #c00;padding:3cqw;color:#fff}
+#introWarning .box b{color:#c00;display:block;margin-bottom:1.2cqw;letter-spacing:.15em}
+#monster{position:absolute;z-index:1;pointer-events:none;opacity:0;transition:opacity 2.2s ease;left:50%;top:48%;transform:translate(-50%,-50%);max-width:52cqw;max-height:58cqw}
+#monster.show{opacity:.88}
+#monster img{width:100%;height:auto;display:block;filter:contrast(1.15) brightness(0.82) saturate(1.2)}
+.blood{color:#c00;text-shadow:0 0 1cqw #f00,0 .4cqw .6cqw #400;animation:dr 2.4s ease-in infinite alternate}
+@keyframes dr{from{transform:translateY(0)}to{transform:translateY(.35cqw)}}
+#tr{display:none;position:absolute;left:0;right:0;height:9%;z-index:4;pointer-events:none;background:linear-gradient(180deg,transparent,rgba(255,255,255,.08) 35%,rgba(255,255,255,.24) 50%,rgba(255,255,255,.07) 65%,transparent);mix-blend-mode:screen;filter:blur(.15cqw);animation:trk 7s linear infinite}
+.cam #tr{display:block}
+@keyframes trk{from{top:-10%}to{top:105%}}
+.cam #t{text-shadow:.25cqw 0 rgba(255,0,0,.5),-.25cqw 0 rgba(0,255,255,.4);filter:blur(.05cqw);animation:jit 3.4s steps(1) infinite}
+@keyframes jit{0%,91%{transform:translateX(0)}92%{transform:translateX(.9cqw) skewX(-3deg)}94%{transform:translateX(-.5cqw)}96%{transform:translateX(.3cqw) skewX(1deg)}98%,100%{transform:translateX(0)}}
+.same{font-size:1.5cqw;color:#8a8;font-weight:normal;letter-spacing:.08em;word-break:break-all;opacity:.85}
+.cls{color:#c33;letter-spacing:.15em}
+.os{color:#5fe3ff;letter-spacing:.12em}
+@media (prefers-reduced-motion:reduce){#k span,.gl,.blood,#tr,.cam #t{animation:none}}
+</style>
+</head>
+<body>
+<div id="s" class="eas">
+<canvas id="n" width="160" height="120"></canvas>
+<div id="g"></div>
+<div id="tr"></div>
+<div id="monster"><img id="monsterImg" alt=""></div>
+<div id="h"></div>
+<div id="t"></div>
+<div id="k"><span></span></div>
+<div id="go">
+  <b>SYNT — ARCHIVES DES BACKROOMS</b>
+  <p>Transmissions récupérées · Poste d’observation 0-Alpha<br>Cartes mémoire corrompues · Bandes VHS isolées · Signal croisé Elmwood Drive</p>
+  <button id="st" type="button">▸ LIRE TOUTE LA TRANSMISSION</button>
+  <button id="st1" type="button">▸ ÉPISODES 1 · 2 · 3 (Le Labo)</button>
+  <button id="st2" type="button">▸ ÉPISODES 4 · 5 · 6 (Les Entités)</button>
+  <button id="st3" type="button">▸ ÉPISODES 7 · 8 · 9 (Contamination)</button>
+  <div class="sub">Casque recommandé · Contenu gore / horreur extrême</div>
+</div>
+<div id="introWarning">
+  <div class="box">
+    <b>AVERTISSEMENT</b>
+    Ce fichier contient des images et descriptions de violence graphique, de démembrement et de mort.
+    Les bandes ont été récupérées dans les Backrooms après la perte de contact avec le poste 0-Alpha.
+    SYNT décline toute responsabilité.
+  </div>
+</div>
+</div>
+
+<script>
+(() => {
+'use strict';
+const $ = id => document.getElementById(id);
+const S = $('s'), T = $('t'), H = $('h'), K = $('k'), GO = $('go'), N = $('n'), M = $('monster'), MI = $('monsterImg');
+const nx = N.getContext('2d');
+let A = null, noiseNodes = [], rumbleG = null;
+
+function audio() {
+  if (A) return;
+  A = new (window.AudioContext || window.webkitAudioContext)();
+  const buf = A.createBuffer(1, A.sampleRate * 2, A.sampleRate);
+  const d = buf.getChannelData(0);
+  for (let i = 0; i < d.length; i++) d[i] = Math.random() * 2 - 1;
+  const src = A.createBufferSource(); src.buffer = buf; src.loop = true;
+  const g = A.createGain(); g.gain.value = 0;
+  src.connect(g); g.connect(A.destination); src.start();
+  noiseNodes = [g];
+  rumbleG = A.createGain(); rumbleG.gain.value = 0;
+  const osc = A.createOscillator(); osc.type = 'sawtooth'; osc.frequency.value = 38;
+  osc.connect(rumbleG); rumbleG.connect(A.destination); osc.start();
+}
+function tone(f1, f2, dur, vol = 0.08, type = 'square', delay = 0) {
+  if (!A) return;
+  const o = A.createOscillator(), g = A.createGain();
+  o.type = type; o.frequency.setValueAtTime(f1, A.currentTime + delay);
+  if (f2 !== f1) o.frequency.exponentialRampToValueAtTime(Math.max(20, f2), A.currentTime + delay + dur);
+  g.gain.setValueAtTime(0, A.currentTime + delay);
+  g.gain.linearRampToValueAtTime(vol, A.currentTime + delay + 0.02);
+  g.gain.exponentialRampToValueAtTime(0.001, A.currentTime + delay + dur);
+  o.connect(g); g.connect(A.destination); o.start(A.currentTime + delay); o.stop(A.currentTime + delay + dur + 0.05);
+}
+function noiseHit(vol, freq, type, dur, Q = 1, delay = 0) {
+  if (!A) return;
+  const buf = A.createBuffer(1, A.sampleRate * dur, A.sampleRate);
+  const d = buf.getChannelData(0);
+  for (let i = 0; i < d.length; i++) d[i] = Math.random() * 2 - 1;
+  const src = A.createBufferSource(); src.buffer = buf;
+  const f = A.createBiquadFilter(); f.type = type || 'bandpass'; f.frequency.value = freq; f.Q.value = Q;
+  const g = A.createGain();
+  g.gain.setValueAtTime(0, A.currentTime + delay);
+  g.gain.linearRampToValueAtTime(vol, A.currentTime + delay + 0.01);
+  g.gain.exponentialRampToValueAtTime(0.001, A.currentTime + delay + dur);
+  src.connect(f); f.connect(g); g.connect(A.destination); src.start(A.currentTime + delay);
+}
+function beep(n = 3) { for (let i = 0; i < n; i++) tone(880, 880, 0.12, 0.1, 'square', i * 0.18); }
+function thump() { noiseHit(0.7, 80, 'lowpass', 0.35, 1); tone(60, 30, 0.4, 0.15, 'sine'); }
+function crunch() { noiseHit(0.55, 400, 'bandpass', 0.22, 3); noiseHit(0.35, 1200, 'highpass', 0.15, 1, 0.05); }
+function scream(v = 1) { tone(700, 1400, 0.6 * v, 0.07 * v, 'sawtooth'); tone(900, 400, 0.8 * v, 0.05 * v, 'square', 0.1); noiseHit(0.4 * v, 2000, 'bandpass', 0.5 * v, 2); }
+function blast() { noiseHit(0.9, 120, 'lowpass', 0.6); tone(90, 40, 0.5, 0.2, 'sawtooth'); }
+function bloodFlash() {
+  S.style.background = '#400';
+  setTimeout(() => { S.style.background = ''; }, 180);
+  setTimeout(() => { S.style.background = '#200'; setTimeout(() => { S.style.background = ''; }, 120); }, 220);
+}
+function rumble(on) { if (rumbleG) rumbleG.gain.setTargetAtTime(on ? 0.045 : 0, A ? A.currentTime : 0, 0.4); }
+function stat(v) { if (noiseNodes[0]) noiseNodes[0].gain.setTargetAtTime(v * 0.04, A ? A.currentTime : 0, 0.3); }
+function speak(txt, rate = 0.85, pitch = 0.55) {
+  if (!window.speechSynthesis) return;
+  window.speechSynthesis.cancel();
+  const u = new SpeechSynthesisUtterance(txt);
+  u.lang = 'fr-FR'; u.rate = rate; u.pitch = pitch; u.volume = 0.7;
+  window.speechSynthesis.speak(u);
+}
+function playEAS() {
+  if (!A) return;
+  const seq = [853, 960, 853, 960, 853];
+  seq.forEach((f, i) => tone(f, f, 0.85, 0.09, 'sine', i * 0.9));
+  setTimeout(() => beep(4), 4600);
+}
+
+function scene(cls) {
+  S.className = cls || 'eas';
+  T.innerHTML = ''; H.innerHTML = ''; K.style.display = 'none';
+}
+function line(html, cls = '') {
+  const d = document.createElement('div');
+  d.className = 'l' + (cls ? ' ' + cls : '');
+  d.innerHTML = html;
+  T.appendChild(d);
+  return d;
+}
+function sleep(ms) { return new Promise(r => setTimeout(r, ms)); }
+async function typ(txt, cls = '', speed = 28) {
+  const d = document.createElement('div');
+  d.className = 'l' + (cls ? ' ' + cls : '');
+  T.appendChild(d);
+  for (let i = 0; i < txt.length; i++) {
+    d.textContent = txt.slice(0, i + 1);
+    if (txt[i] !== ' ') await sleep(speed + (Math.random() * 12 | 0));
+  }
+  return d;
+}
+function ticker(txt) {
+  K.style.display = 'block';
+  K.querySelector('span').textContent = txt + '   ·   ' + txt + '   ·   ' + txt;
+}
+function sameHead(code) {
+  H.innerHTML = '<span class="same">' + code + '</span>';
+}
+function showMonster(kind) {
+  const c = document.createElement('canvas');
+  c.width = 320; c.height = 400;
+  const x = c.getContext('2d');
+  x.fillStyle = '#000'; x.fillRect(0, 0, 320, 400);
+  if (kind === 'rodeur') {
+    x.fillStyle = '#0a0a0a';
+    x.beginPath(); x.ellipse(160, 90, 38, 48, 0, 0, 7); x.fill();
+    x.fillRect(140, 130, 40, 160);
+    x.fillRect(90, 150, 28, 140); x.fillRect(202, 150, 28, 140);
+    x.fillRect(120, 290, 30, 100); x.fillRect(170, 290, 30, 100);
+    x.fillStyle = '#c00'; x.beginPath(); x.arc(148, 82, 6, 0, 7); x.fill(); x.beginPath(); x.arc(172, 82, 6, 0, 7); x.fill();
+  } else if (kind === 'rieur') {
+    x.fillStyle = '#111';
+    x.beginPath(); x.arc(130, 160, 14, 0, 7); x.fill();
+    x.beginPath(); x.arc(190, 160, 14, 0, 7); x.fill();
+    x.strokeStyle = '#c00'; x.lineWidth = 4;
+    x.beginPath(); x.moveTo(110, 210); x.quadraticCurveTo(160, 280, 210, 210); x.stroke();
+    x.fillStyle = '#200'; x.fillRect(100, 200, 120, 8);
+  } else if (kind === 'molosse') {
+    x.fillStyle = '#0a0a0a';
+    x.beginPath(); x.ellipse(160, 220, 90, 50, 0, 0, 7); x.fill();
+    x.beginPath(); x.ellipse(240, 200, 40, 30, 0.3, 0, 7); x.fill();
+    x.fillStyle = '#c00'; x.beginPath(); x.arc(255, 192, 7, 0, 7); x.fill(); x.beginPath(); x.arc(235, 188, 7, 0, 7); x.fill();
+  } else if (kind === 'statue') {
+    x.fillStyle = '#1a1a1a';
+    x.fillRect(130, 60, 60, 80); x.fillRect(140, 140, 40, 160);
+    x.fillRect(100, 100, 30, 90); x.fillRect(190, 100, 30, 90);
+    x.fillStyle = '#333'; x.fillRect(145, 70, 12, 8); x.fillRect(163, 70, 12, 8);
+  } else {
+    x.fillStyle = '#080808';
+    x.beginPath(); x.moveTo(160, 40); x.lineTo(220, 380); x.lineTo(100, 380); x.closePath(); x.fill();
+    x.fillStyle = '#c00';
+    for (let i = 0; i < 18; i++) { x.beginPath(); x.arc(120 + Math.random() * 80, 80 + Math.random() * 200, 3 + Math.random() * 4, 0, 7); x.fill(); }
+  }
+  MI.src = c.toDataURL('image/png');
+  M.classList.add('show');
+}
+function hideMonster() { M.classList.remove('show'); }
+
+async function showIntroWarning() {
+  const w = $('introWarning');
+  w.classList.add('show');
+  await sleep(4200);
+  w.classList.add('hide');
+  await sleep(800);
+  w.classList.remove('show', 'hide');
+}
+
+async function ep1() {
+  scene('eas');
+  sameHead('ZCZC-SYNT-EAS-0ALPHA+0001-3510000-CWNT/NU-');
+  await sleep(2200);
+  playEAS(); rumble(true);
+  await sleep(3200);
+  speak('Alerte SYNT. Perte de contact avec le poste 0-Alpha.');
+  await typ('ALERTE SYNT — PERTE DE CONTACT AVEC LE POSTE 0-ALPHA', 'red', 26);
+  await sleep(700);
+  await typ('DERNIÈRE TRANSMISSION REÇUE : 03:14:07', '', 30);
+  await sleep(600);
+  await typ('NIVEAU 0 · LE LOBBY · MOQUETTE HUMIDE · NÉONS EN PANNE', 'yellow', 28);
+  await sleep(2200);
+  rumble(false);
+
+  scene('lab');
+  H.innerHTML = '<span class="os">SYNT-OS 4.2</span><span class="os">POSTE 0-ALPHA</span>';
+  await sleep(800);
+  await typ('JOURNAL DE BORD — FÉLIX LABERGE', '', 28);
+  await sleep(500);
+  line('Mission : photographier les entités. Transférer la carte. Ne jamais rester dehors après le signal.');
+  await sleep(1800);
+  line('La baie vitrée donne sur le Niveau 0. On voit la moquette jaune, le papier peint, les néons qui bourdonnent.');
+  await sleep(1800);
+  line('Derrière la porte ouest : le portail. Derrière la porte nord : le comptoir. Au sud : le magasin.');
+  await sleep(1600);
+  line('Aujourd’hui, la carte mémoire est pleine. Je vais sortir une dernière fois.', 'red');
+  await sleep(2400);
+}
+
+async function ep2() {
+  scene('cam'); rumble(true); stat(.12);
+  let s = 0;
+  const draw = () => { H.innerHTML = '<span class="r">● REC</span><span>CAM-SYNT</span><span>03:' + String(14 + Math.floor(s / 60)).padStart(2, '0') + ':' + String(s % 60).padStart(2, '0') + '</span>'; };
+  draw(); const camT = setInterval(() => { s += 2; draw(); }, 1000);
+  await sleep(1200);
+  line('FÉLIX : Niveau 0. Lampe allumée. Santé mentale stable.');
+  await sleep(2000);
+  line('FÉLIX : Des pas. Ce ne sont pas les miens.');
+  await sleep(1800);
+  thump();
+  line('[ Bruit sourd répété. Distance estimée : 18 m. ]', 'blood');
+  await sleep(2200);
+  line('FÉLIX : C’est le Rôdeur. Silhouette noire, 2,5 m. Membres trop longs.');
+  await sleep(2000);
+  showMonster('rodeur');
+  scream(0.9); crunch();
+  await sleep(800);
+  line('FÉLIX : Il m’a vu. Je… je cours vers le sas.');
+  await sleep(1800);
+  line('[ La caméra tremble. On entend la respiration. Puis un craquement d’os très proche. ]', 'blood');
+  thump(); bloodFlash();
+  await sleep(2000);
+  hideMonster(); clearInterval(camT); rumble(false); stat(.02);
+  await sleep(1200);
+}
+
+async function ep3() {
+  scene('doc');
+  H.innerHTML = '<span class="cls">CLASSIFIÉ — SYNT</span><span class="cls">RAPPORT F. LABERGE</span>';
+  await sleep(600);
+  await typ('RAPPORT D’INCIDENT — POSTE 0-ALPHA', '', 26);
+  await sleep(500);
+  line('Félix Laberge a regagné le sas. Carte mémoire partiellement corrompue.');
+  await sleep(1600);
+  line('Photos récupérées : 4. Sujet identifiable : ENT-001 « Le Rôdeur ».');
+  await sleep(1600);
+  crunch();
+  line('Sur la dernière image, on distingue clairement les griffes enfoncées dans une cage thoracique ouverte. Le sang a éclaboussé l’objectif.', 'blood');
+  await sleep(2200);
+  line('Félix Laberge présente des lacérations profondes au dos et à l’épaule gauche. Il refuse l’évacuation.');
+  await sleep(1800);
+  line('Citation : « Il faut documenter. SYNT a besoin des images. »', 'red');
+  await sleep(1800);
+  line('Note marginale (écriture différente) : « Même signature que Pâques 98. »');
+  await sleep(2200);
+}
+
+async function ep4() {
+  scene('eas');
+  sameHead('ZCZC-SYNT-ENT-002+0004-3510400-CWNT/NU-');
+  await sleep(2000);
+  playEAS(); rumble(true);
+  await sleep(2800);
+  speak('Alerte entité. Présence confirmée Niveau 1.');
+  await typ('ALERTE ENTITÉ — PRÉSENCE CONFIRMÉE NIVEAU 1', 'red', 28);
+  await sleep(600);
+  await typ('ENT-002 · LE RIEUR · HOSTILE · PSYCHIQUE', '', 30);
+  await sleep(2000);
+  rumble(false);
+
+  scene('cam'); rumble(true); stat(.16);
+  let s = 0;
+  const draw = () => { H.innerHTML = '<span class="r">● REC</span><span>CAM-SYNT</span><span>NIV-1 04:' + String(22 + Math.floor(s / 60)).padStart(2, '0') + ':' + String(s % 60).padStart(2, '0') + '</span>'; };
+  draw(); const camT = setInterval(() => { s += 2; draw(); }, 1000);
+  await sleep(1400);
+  line('FÉLIX : Zone habitable. Coupure de courant. Lampe uniquement.');
+  await sleep(2000);
+  line('FÉLIX : Deux points lumineux dans le noir. Un sourire trop large.');
+  await sleep(1800);
+  showMonster('rieur');
+  await sleep(1200);
+  line('[ Le sourire s’élargit. Les commissures se fendent jusqu’aux oreilles. Des lambeaux de joue pendent. ]', 'blood');
+  crunch(); bloodFlash();
+  await sleep(2200);
+  line('FÉLIX : Il ne bouge pas tant que je le regarde. Mais… il est plus près.');
+  await sleep(2000);
+  scream(1.1);
+  line('FÉLIX : (choc mental) Ma tête… la peau… elle se détache…', 'red');
+  bloodFlash();
+  await sleep(2000);
+  hideMonster(); clearInterval(camT); rumble(false); stat(.02);
+  await sleep(1400);
+}
+
+async function ep5() {
+  scene('news');
+  ticker('SYNT-INFO — ENTITÉ HOSTILE NIVEAU 3 — NE PAS APPROCHER — CHARGE MORTALE');
+  line('<span class="tag">FLASH</span> RÉSEAU SYNT · STATION ÉLECTRIQUE');
+  await sleep(900);
+  await typ('ENT-004 « Le Molosse » observé dans le secteur des machines.', '', 28);
+  await sleep(1200);
+  await typ('Quadrupède. Yeux rouges. Mâchoires en scie. Charge dès détection visuelle.', '', 28);
+  await sleep(1600);
+  crunch();
+  await typ('Contact confirmé : cuisses arrachées, abdomen ouvert, entrailles sur le sol de béton.', 'blood', 26);
+  await sleep(2200);
+
+  scene('cam'); rumble(true); stat(.2);
+  H.innerHTML = '<span class="r">● REC</span><span>CAM-SYNT</span><span>NIV-3</span>';
+  await sleep(1000);
+  line('FÉLIX : Grognement. Il est là.');
+  await sleep(1600);
+  showMonster('molosse');
+  thump(); scream(1.2);
+  await sleep(800);
+  line('[ La charge dure cinq secondes. On entend le bruit humide de la chair qui se déchire. ]', 'blood');
+  crunch(); bloodFlash(); blast();
+  await sleep(2000);
+  line('FÉLIX : (râle) La… carte… transférez…', 'red');
+  await sleep(1800);
+  hideMonster(); rumble(false); stat(.02);
+  await sleep(1400);
+}
+
+async function ep6() {
+  scene('doc');
+  H.innerHTML = '<span class="cls">PROTÉGÉ A — SYNT</span><span class="cls">ENT-006</span>';
+  await sleep(600);
+  await typ('FICHE ENTITÉ — ENT-006 « LA STATUE »', '', 26);
+  await sleep(500);
+  line('Habitat : Niveau 5 · Hôtel de la Terreur');
+  await sleep(1200);
+  line('Comportement : immobile tant qu’observée. Avance dès que le regard se détourne.');
+  await sleep(1600);
+  crunch();
+  line('Contact : les bras de pierre s’enfoncent dans le thorax, écrasent les organes, laissent le corps fendu du sternum au pubis.', 'blood');
+  await sleep(2200);
+  line('Recommandation : reculer en maintenant l’entité dans le cadre de la caméra. Ne jamais cligner des yeux trop longtemps.');
+  await sleep(2000);
+
+  scene('cam'); rumble(true); stat(.18);
+  H.innerHTML = '<span class="r">● REC</span><span>CAM-SYNT</span><span>NIV-5 · HÔTEL</span>';
+  await sleep(1200);
+  line('FÉLIX : Elle est au fond du couloir. Bras levés devant le visage.');
+  await sleep(1800);
+  showMonster('statue');
+  await sleep(1400);
+  line('FÉLIX : Je recule. Je la garde à l’écran. Le piano joue quelque part.');
+  await sleep(2000);
+  line('[ Un raclement de pierre. Elle a avancé de trois mètres. ]', 'blood');
+  thump();
+  await sleep(1800);
+  line('FÉLIX : Non… non, je l’ai perdue des yeux une seconde—', 'red');
+  scream(1.4); crunch(); bloodFlash();
+  await sleep(1600);
+  line('[ L’objectif filme le plafond, puis une moquette rouge saturée. Quelque chose de lourd est traîné hors du cadre. ]', 'blood');
+  await sleep(2400);
+  hideMonster(); rumble(false); stat(.02);
+  await sleep(1400);
+}
+
+async function ep7() {
+  scene('eas');
+  sameHead('ZCZC-SYNT-LAB-BREACH+0007-3510700-CWNT/NU-');
+  await sleep(2200);
+  playEAS(); rumble(true);
+  await sleep(3000);
+  speak('Brèche. Le sas a été forcé. Les entités sont à l’intérieur.');
+  await typ('BRÈCHE — LE SAS A ÉTÉ FORCÉ', 'red', 30);
+  await sleep(600);
+  await typ('LES ENTITÉS SONT À L’INTÉRIEUR DU POSTE 0-ALPHA', 'red', 28);
+  await sleep(700);
+  await typ('PROTOCOLE DE QUARANTAINE ACTIVÉ', '', 30);
+  await sleep(2200);
+  rumble(false);
+
+  scene('lab');
+  H.innerHTML = '<span class="os">SYNT-OS 4.2</span><span class="os">ALERTE ROUGE</span>';
+  await sleep(800);
+  await typ('JOURNAL AUTOMATIQUE — 03:47:12', '', 28);
+  await sleep(500);
+  line('Détection de mouvement dans le couloir du portail.');
+  await sleep(1400);
+  line('Caméra 3 : silhouette noire. Membres trop longs. Yeux lumineux.');
+  await sleep(1600);
+  showMonster('rodeur');
+  thump(); crunch();
+  await sleep(1000);
+  line('Caméra 5 : le Rieur est devant le comptoir des acquisitions. Il sourit à l’objectif.', 'blood');
+  await sleep(1800);
+  line('Caméra 1 (baie vitrée) : la Statue est de l’autre côté du verre. Elle ne bouge pas.');
+  await sleep(1800);
+  hideMonster();
+  line('Signal parasite détecté sur la fréquence EAS secondaire.', 'red');
+  await sleep(1600);
+  line('Origine estimée : ELMWOOD DRIVE — enregistrements isolés.');
+  await sleep(1800);
+  line('Félix Laberge et les autres chercheurs restants sont portés disparus ou confirmés morts.', 'red');
+  await sleep(2400);
+}
+
+async function ep8() {
+  scene('cam'); rumble(true); stat(.22);
+  let s = 0;
+  const draw = () => { H.innerHTML = '<span class="r">● REC</span><span>DERNIÈRE CARTE</span><span>04:' + String(2 + Math.floor(s / 60)).padStart(2, '0') + ':' + String(s % 60).padStart(2, '0') + '</span>'; };
+  draw(); const camT = setInterval(() => { s += 2; draw(); }, 1000);
+  await sleep(1200);
+  line('FÉLIX : C’est la dernière carte. Je la transfère maintenant.');
+  await sleep(1800);
+  line('FÉLIX : Si quelqu’un trouve ça… ne venez pas. Le labo n’est plus sûr.');
+  await sleep(2000);
+  line('[ Bruit de griffes sur le métal. Quelque chose frappe la porte du bureau. ]', 'blood');
+  thump(); crunch();
+  await sleep(1600);
+  showMonster('rieur');
+  await sleep(1000);
+  line('FÉLIX : Il est derrière la porte. Je vois le sourire à travers la fente.');
+  await sleep(1800);
+  scream(1.3); bloodFlash();
+  line('FÉLIX : (cri étouffé) Les dents… trop de dents—', 'red');
+  crunch(); blast();
+  await sleep(1600);
+  line('[ L’objectif est éclaboussé. On distingue une main qui glisse le long du mur, laissant une trace rouge. ]', 'blood');
+  await sleep(2000);
+  hideMonster();
+  T.innerHTML = '';
+  line('FÉLIX : (râle) Attendez… il y a une autre cassette dans le tiroir…');
+  await sleep(1800);
+  line('FÉLIX : Boîtier taché. Dix-sept marques faites avec des ongles. Comme à Elmwood Drive.');
+  await sleep(2000);
+  line('[ Sur la bande parasite : une femme en robe fleurie, pieds nus, yeux noirs. Du sang coule de sa bouche sur les fleurs. ]', 'blood');
+  thump(); crunch();
+  await sleep(2200);
+  line('FÉLIX : Elle dit… « Des monstres rentrent dans les maisons… »', 'red');
+  await sleep(2000);
+  clearInterval(camT); rumble(false); stat(.02);
+  await sleep(1400);
+}
+
+async function ep9() {
+  scene('eas');
+  sameHead('ZCZC-SYNT-FINAL+0009-3510900-CWNT/NU-');
+  await sleep(2400);
+  playEAS(); rumble(true);
+  await sleep(3200);
+  speak('Ceci est le dernier message du poste 0-Alpha.');
+  await typ('CECI EST LE DERNIER MESSAGE DU POSTE 0-ALPHA', 'red', 28);
+  await sleep(700);
+  await typ('TOUTES LES FRÉQUENCES SONT TOMBÉES', '', 30);
+  await sleep(600);
+  await typ('SI VOUS RECEVEZ CECI… NE RÉPONDEZ PAS', 'red', 28);
+  await sleep(2200);
+  rumble(false);
+
+  scene('doc');
+  H.innerHTML = '<span class="cls">ARCHIVES SYNT</span><span class="cls">PIÈCE 17</span>';
+  await sleep(800);
+  line('Cassette VHS récupérée dans le sas. Boîtier taché de sang séché.');
+  await sleep(1600);
+  line('RAYURES SUR LE BOÎTIER : 17 MARQUES. FAITES AVEC DES ONGLES.');
+  await sleep(1800);
+  line('Même signature que les enregistrements isolés d’Elmwood Drive.');
+  await sleep(1800);
+  crunch();
+  line('Sur la bande : une ampoule sous la peau. Puis la peau s’ouvre. Les racines percent la chair de l’intérieur.', 'blood');
+  await sleep(2200);
+  line('Les os se brisent pour se ramifier. Les yeux éclatent en premier.');
+  await sleep(1800);
+  speak('Si vous voyez une racine, il est déjà trop tard.', 0.75, 0.4);
+  await typ('SI VOUS VOYEZ UNE RACINE… IL EST DÉJÀ TROP TARD.', 'red', 32);
+  await sleep(2400);
+
+  scene('cam'); stat(.1);
+  H.innerHTML = '<span class="r">■ STOP</span><span>VHS · ELMWOOD / SYNT</span>';
+  await sleep(800);
+  line('FIN DE L’ENREGISTREMENT', 'big');
+  await sleep(2000);
+  showMonster('rodeur');
+  scream(1.8); blast(); crunch(); bloodFlash();
+  await sleep(1600);
+  for (const x of ['NE BOUGEZ PLUS.', 'NE REGARDEZ PAS.', 'ELLE EST LÀ.']) {
+    T.innerHTML = '';
+    line(x, 'big blood'); bloodFlash(); await sleep(1500);
+  }
+  hideMonster();
+  await sleep(1000);
+  T.innerHTML = '';
+  line('Notes du dernier propriétaire, écrites avec du sang séché :', 'blood');
+  await sleep(1800);
+  speak('Ne pas lire. Ne pas regarder. Cela vous consumera.', 0.7, 0.4);
+  await typ('« NE PAS LIRE. NE PAS REGARDER. CELA VOUS CONSUMERA. »', 'blood', 36);
+  await sleep(2600);
+  T.innerHTML = '';
+  line('SYNT — ARCHIVES DES BACKROOMS', 'big');
+  await sleep(1600);
+  line('POSTE 0-ALPHA', 'big red gl');
+  await sleep(1600);
+  line('ELMWOOD DRIVE', 'big gl');
+  await sleep(1800);
+  line('TRANSMISSION PERDUE', 'big');
+  await sleep(2800);
+  rumble(false); stat(0);
+}
+
+async function playAll() {
+  GO.style.display = 'none';
+  await showIntroWarning();
+  if (!A) audio();
+  if (window.speechSynthesis) window.speechSynthesis.getVoices();
+  scene('eas'); await sleep(400);
+  line('SYNT — ARCHIVES DES BACKROOMS', 'big gl'); await sleep(2400);
+  line('TRANSMISSIONS RÉCUPÉRÉES · POSTE 0-ALPHA', ''); await sleep(2000);
+  T.innerHTML = ''; await sleep(400);
+  await ep1(); await ep2(); await ep3();
+  await ep4(); await ep5(); await ep6();
+  await ep7(); await ep8(); await ep9();
+  await sleep(2800);
+  GO.style.display = 'flex';
+  $('st').textContent = '▸ REVOIR TOUTE LA TRANSMISSION';
+}
+async function play123() {
+  GO.style.display = 'none';
+  await showIntroWarning();
+  if (!A) audio();
+  scene('eas'); await sleep(300);
+  line('SYNT — ARCHIVES', 'big gl'); await sleep(1800);
+  line('ÉPISODES 1 · 2 · 3', ''); await sleep(1600);
+  T.innerHTML = ''; await sleep(300);
+  await ep1(); await ep2(); await ep3();
+  await sleep(2000); GO.style.display = 'flex';
+}
+async function play456() {
+  GO.style.display = 'none';
+  await showIntroWarning();
+  if (!A) audio();
+  scene('eas'); await sleep(300);
+  line('SYNT — ARCHIVES', 'big gl'); await sleep(1800);
+  line('ÉPISODES 4 · 5 · 6', ''); await sleep(1600);
+  T.innerHTML = ''; await sleep(300);
+  await ep4(); await ep5(); await ep6();
+  await sleep(2000); GO.style.display = 'flex';
+}
+async function play789() {
+  GO.style.display = 'none';
+  await showIntroWarning();
+  if (!A) audio();
+  scene('eas'); await sleep(300);
+  line('SYNT — ARCHIVES', 'big gl'); await sleep(1800);
+  line('ÉPISODES 7 · 8 · 9', ''); await sleep(1600);
+  T.innerHTML = ''; await sleep(300);
+  await ep7(); await ep8(); await ep9();
+  await sleep(2000); GO.style.display = 'flex';
+}
+
+$('st').onclick = playAll;
+$('st1').onclick = play123;
+$('st2').onclick = play456;
+$('st3').onclick = play789;
+
+(function grain() {
+  const im = nx.createImageData(N.width, N.height);
+  const d = im.data;
+  function frame() {
+    for (let i = 0; i < d.length; i += 4) {
+      const v = (Math.random() * 255) | 0;
+      d[i] = d[i + 1] = d[i + 2] = v; d[i + 3] = 40;
+    }
+    nx.putImageData(im, 0, 0);
+    requestAnimationFrame(frame);
+  }
+  frame();
+})();
+})();
+</script>
+</body>
+</html>
