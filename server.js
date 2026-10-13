@@ -7,6 +7,8 @@ const MAX_ROOMS = Number(process.env.MAX_ROOMS || 100);
 const MAX_PLAYERS_PER_ROOM = 4;
 const rooms = new Map();
 const clients = new Map();
+const ALLOWED_SKINS = new Set(["security","medic","engineer","research","scout","hazmat","tactical","rescue"]);
+function safeSkin(v) { return ALLOWED_SKINS.has(String(v || "")) ? String(v) : "security"; }
 
 const server = http.createServer((req, res) => {
   if (req.url === "/health" || req.url === "/") {
@@ -57,7 +59,7 @@ function safeName(v, fallback, max) {
 }
 wss.on("connection", ws => {
   const id = crypto.randomUUID();
-  const client = {id, ws, name:"Joueur", roomId:null};
+  const client = {id, ws, name:"Joueur", skin:"security", roomId:null};
   clients.set(id, client);
   send(ws, {type:"identity", id});
   send(ws, {type:"rooms", rooms:publicRooms()});
@@ -69,6 +71,7 @@ wss.on("connection", ws => {
 
     if (data.type === "identify") {
       client.name = safeName(data.name, "Joueur", 18);
+      client.skin = safeSkin(data.skin);
       return;
     }
     if (data.type === "list") {
@@ -88,7 +91,7 @@ wss.on("connection", ws => {
       };
       rooms.set(room.id, room);
       client.roomId = room.id;
-      send(ws, {type:"roomCreated",room:{id:room.id,name:room.name,players:1,maxPlayers:room.maxPlayers},players:[{id:client.id,name:client.name}]});
+      send(ws, {type:"roomCreated",room:{id:room.id,name:room.name,players:1,maxPlayers:room.maxPlayers},players:[{id:client.id,name:client.name,skin:client.skin}]});
       broadcastRoomList();
       return;
     }
@@ -98,11 +101,11 @@ wss.on("connection", ws => {
       if (room.players.size >= room.maxPlayers) { send(ws,{type:"error",message:"Ce salon est complet."}); return; }
       if (client.roomId === room.id) return;
       leaveRoom(client);
-      const existing = [...room.players].map(pid => { const p=clients.get(pid); return p?{id:p.id,name:p.name}:null; }).filter(Boolean);
+      const existing = [...room.players].map(pid => { const p=clients.get(pid); return p?{id:p.id,name:p.name,skin:p.skin}:null; }).filter(Boolean);
       room.players.add(client.id);
       client.roomId = room.id;
       send(ws,{type:"joined",room:{id:room.id,name:room.name,players:room.players.size,maxPlayers:room.maxPlayers},players:existing});
-      broadcastRoom(room,{type:"playerJoined",player:{id:client.id,name:client.name}},ws);
+      broadcastRoom(room,{type:"playerJoined",player:{id:client.id,name:client.name,skin:client.skin}},ws);
       broadcastRoomList();
       return;
     }
@@ -115,8 +118,9 @@ wss.on("connection", ws => {
     if (!room) { send(ws,{type:"error",message:"Rejoins un salon avant cette action."}); return; }
 
     if (data.type === "state") {
+      if (data.skin !== undefined) client.skin = safeSkin(data.skin);
       const payload = {
-        type:"state", id:client.id, name:client.name,
+        type:"state", id:client.id, name:client.name, skin:client.skin,
         x:Number(data.x), z:Number(data.z), yaw:Number(data.yaw)||0,
         pitch:Number(data.pitch)||0, level:Number(data.level)||0,
         state:String(data.state||"")
