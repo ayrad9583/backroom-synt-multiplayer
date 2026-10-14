@@ -1,14 +1,29 @@
 <!doctype html>
 <html lang="fr">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta http-equiv="refresh" content="0; url=backrooms-synt-public-rooms.html">
-<title>Backrooms SYNT</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Redirection immédiate vers la version demandée -->
+  <meta http-equiv="refresh" content="0; url=backrooms-synt%20(5)%20derni%C3%A8re%20version.html">
+  <title>Backrooms SYNT</title>
+  <script>
+    // Fallback JavaScript redirection en cas de blocage de la meta-refresh
+    (function() {
+      var target = "backrooms-synt (5) dernière version.html";
+      try {
+        window.location.replace(encodeURI(target));
+      } catch (e) {
+        // noop
+      }
+    })();
+  </script>
 </head>
 <body>
-<p>Ouverture de Backrooms SYNT…</p>
-<p><a href="backrooms-synt-public-rooms.html">Cliquer ici si le jeu ne s’ouvre pas automatiquement.</a></p>
-<script>window.location.replace('./backrooms-synt-public-rooms.html');</script>
+  <p>Ouverture de Backrooms SYNT…</p>
+  <p><a id="link" href="#">Cliquer ici si le jeu ne s’ouvre pas automatiquement.</a></p>
+  <script>
+    // Lien de secours (utilise encodeURI pour espaces et caractères accentués)
+    document.getElementById('link').href = encodeURI("backrooms-synt (5) dernière version.html");
+  </script>
 </body>
 </html>
