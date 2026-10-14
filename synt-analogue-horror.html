@@ -11,9 +11,9 @@ body{display:flex;align-items:center;justify-content:center}
 #s{position:relative;container-type:inline-size;width:min(100vw,177.78vh);aspect-ratio:16/9;background:#000;overflow:hidden;transition:background .3s}
 #s::before,#s::after{content:"";position:absolute;left:0;right:0;z-index:5;background:#000;height:11%;pointer-events:none}
 #s::before{top:0}#s::after{bottom:0}
-#g{position:absolute;inset:0;pointer-events:none;z-index:4;background:repeating-linear-gradient(0deg,rgba(0,0,0,.12) 0 1px,transparent 1px 3px),radial-gradient(ellipse at center,transparent 60%,rgba(0,0,0,.45))}
+#g{position:absolute;inset:0;pointer-events:none;z-index:4;background:repeating-linear-gradient(0deg,rgba(0,0,0,.12) 0 1px,transparent 1px 3px),radial-gradient(ellipse at center,transparent 60%,rg[...]
 #n{position:absolute;inset:0;width:100%;height:100%;opacity:.07;image-rendering:pixelated;pointer-events:none}
-#t{position:absolute;inset:0;padding:0 8cqw;display:flex;flex-direction:column;justify-content:center;font-size:2.6cqw;line-height:1.4;color:#fff;font-weight:bold;text-shadow:0 0 .8cqw #000;z-index:2}
+#t{position:absolute;inset:0;padding:0 8cqw;display:flex;flex-direction:column;justify-content:center;font-size:2.6cqw;line-height:1.4;color:#fff;font-weight:bold;text-shadow:0 0 .8cqw #000;z-inde[...]
 .l{margin:.4em 0;animation:in .6s both}
 @keyframes in{from{opacity:0}}
 #h{position:absolute;left:6cqw;right:6cqw;top:13%;display:flex;justify-content:space-between;font-size:2cqw;color:#fff;z-index:2}
@@ -31,9 +31,6 @@ body{display:flex;align-items:center;justify-content:center}
 .big{font-size:5.2cqw;text-align:center;letter-spacing:.25em}
 .gl{animation:gl .25s steps(2) infinite}
 @keyframes gl{0%{transform:translate(0)}50%{transform:translate(-.6cqw,.3cqw);text-shadow:.5cqw 0 #f00}}
-.tag{display:inline-block;background:#c00;color:#fff;padding:.2em .6em;font-weight:bold}
-.synt{color:#5fe3ff}
-.yellow{color:#f7e98f}
 #go{position:absolute;inset:0;z-index:6;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2.5cqw;background:#000;color:#fff;text-align:center}
 #go b{font-size:4.2cqw;letter-spacing:.2em;font-weight:normal}
 #go p{font-size:2cqw;margin:0;max-width:72cqw;line-height:1.5;opacity:.85}
@@ -50,11 +47,11 @@ body{display:flex;align-items:center;justify-content:center}
 #monster img{width:100%;height:auto;display:block;filter:contrast(1.15) brightness(0.82) saturate(1.2)}
 .blood{color:#c00;text-shadow:0 0 1cqw #f00,0 .4cqw .6cqw #400;animation:dr 2.4s ease-in infinite alternate}
 @keyframes dr{from{transform:translateY(0)}to{transform:translateY(.35cqw)}}
-#tr{display:none;position:absolute;left:0;right:0;height:9%;z-index:4;pointer-events:none;background:linear-gradient(180deg,transparent,rgba(255,255,255,.08) 35%,rgba(255,255,255,.24) 50%,rgba(255,255,255,.07) 65%,transparent);mix-blend-mode:screen;filter:blur(.15cqw);animation:trk 7s linear infinite}
+#tr{display:none;position:absolute;left:0;right:0;height:9%;z-index:4;pointer-events:none;background:linear-gradient(180deg,transparent,rgba(255,255,255,.08) 35%,rgba(255,255,255,.24) 50%,rgba(255[...]
 .cam #tr{display:block}
 @keyframes trk{from{top:-10%}to{top:105%}}
 .cam #t{text-shadow:.25cqw 0 rgba(255,0,0,.5),-.25cqw 0 rgba(0,255,255,.4);filter:blur(.05cqw);animation:jit 3.4s steps(1) infinite}
-@keyframes jit{0%,91%{transform:translateX(0)}92%{transform:translateX(.9cqw) skewX(-3deg)}94%{transform:translateX(-.5cqw)}96%{transform:translateX(.3cqw) skewX(1deg)}98%,100%{transform:translateX(0)}}
+@keyframes jit{0%,91%{transform:translateX(0)}92%{transform:translateX(.9cqw) skewX(-3deg)}94%{transform:translateX(-.5cqw)}96%{transform:translateX(.3cqw) skewX(1deg)}98%,100%{transform:translate[...]
 .same{font-size:1.5cqw;color:#8a8;font-weight:normal;letter-spacing:.08em;word-break:break-all;opacity:.85}
 .cls{color:#c33;letter-spacing:.15em}
 .os{color:#5fe3ff;letter-spacing:.12em}
@@ -271,7 +268,7 @@ async function ep1() {
 async function ep2() {
   scene('cam'); rumble(true); stat(.12);
   let s = 0;
-  const draw = () => { H.innerHTML = '<span class="r">● REC</span><span>CAM-SYNT</span><span>03:' + String(14 + Math.floor(s / 60)).padStart(2, '0') + ':' + String(s % 60).padStart(2, '0') + '</span>'; };
+  const draw = () => { H.innerHTML = '<span class="r">● REC</span><span>CAM-SYNT</span><span>03:' + String(14 + Math.floor(s / 60)).padStart(2, '0') + ':' + String(s % 60).padStart(2, '0') + '<[...]
   draw(); const camT = setInterval(() => { s += 2; draw(); }, 1000);
   await sleep(1200);
   line('FÉLIX : Niveau 0. Lampe allumée. Santé mentale stable.');
@@ -283,7 +280,7 @@ async function ep2() {
   await sleep(2200);
   line('FÉLIX : C’est le Rôdeur. Silhouette noire, 2,5 m. Membres trop longs.');
   await sleep(2000);
-  showMonster('rodeur');
+  
   scream(0.9); crunch();
   await sleep(800);
   line('FÉLIX : Il m’a vu. Je… je cours vers le sas.');
@@ -331,14 +328,14 @@ async function ep4() {
 
   scene('cam'); rumble(true); stat(.16);
   let s = 0;
-  const draw = () => { H.innerHTML = '<span class="r">● REC</span><span>CAM-SYNT</span><span>NIV-1 04:' + String(22 + Math.floor(s / 60)).padStart(2, '0') + ':' + String(s % 60).padStart(2, '0') + '</span>'; };
+  const draw = () => { H.innerHTML = '<span class="r">● REC</span><span>CAM-SYNT</span><span>NIV-1 04:' + String(22 + Math.floor(s / 60)).padStart(2, '0') + ':' + String(s % 60).padStart(2, '0'[...]
   draw(); const camT = setInterval(() => { s += 2; draw(); }, 1000);
   await sleep(1400);
   line('FÉLIX : Zone habitable. Coupure de courant. Lampe uniquement.');
   await sleep(2000);
   line('FÉLIX : Deux points lumineux dans le noir. Un sourire trop large.');
   await sleep(1800);
-  showMonster('rieur');
+  
   await sleep(1200);
   line('[ Le sourire s’élargit. Les commissures se fendent jusqu’aux oreilles. Des lambeaux de joue pendent. ]', 'blood');
   crunch(); bloodFlash();
@@ -371,7 +368,7 @@ async function ep5() {
   await sleep(1000);
   line('FÉLIX : Grognement. Il est là.');
   await sleep(1600);
-  showMonster('molosse');
+  
   thump(); scream(1.2);
   await sleep(800);
   line('[ La charge dure cinq secondes. On entend le bruit humide de la chair qui se déchire. ]', 'blood');
@@ -404,7 +401,7 @@ async function ep6() {
   await sleep(1200);
   line('FÉLIX : Elle est au fond du couloir. Bras levés devant le visage.');
   await sleep(1800);
-  showMonster('statue');
+  
   await sleep(1400);
   line('FÉLIX : Je recule. Je la garde à l’écran. Le piano joue quelque part.');
   await sleep(2000);
@@ -444,7 +441,7 @@ async function ep7() {
   await sleep(1400);
   line('Caméra 3 : silhouette noire. Membres trop longs. Yeux lumineux.');
   await sleep(1600);
-  showMonster('rodeur');
+  
   thump(); crunch();
   await sleep(1000);
   line('Caméra 5 : le Rieur est devant le comptoir des acquisitions. Il sourit à l’objectif.', 'blood');
@@ -463,7 +460,7 @@ async function ep7() {
 async function ep8() {
   scene('cam'); rumble(true); stat(.22);
   let s = 0;
-  const draw = () => { H.innerHTML = '<span class="r">● REC</span><span>DERNIÈRE CARTE</span><span>04:' + String(2 + Math.floor(s / 60)).padStart(2, '0') + ':' + String(s % 60).padStart(2, '0') + '</span>'; };
+  const draw = () => { H.innerHTML = '<span class="r">● REC</span><span>DERNIÈRE CARTE</span><span>04:' + String(2 + Math.floor(s / 60)).padStart(2, '0') + ':' + String(s % 60).padStart(2, '0'[...]
   draw(); const camT = setInterval(() => { s += 2; draw(); }, 1000);
   await sleep(1200);
   line('FÉLIX : C’est la dernière carte. Je la transfère maintenant.');
@@ -473,7 +470,7 @@ async function ep8() {
   line('[ Bruit de griffes sur le métal. Quelque chose frappe la porte du bureau. ]', 'blood');
   thump(); crunch();
   await sleep(1600);
-  showMonster('rieur');
+  
   await sleep(1000);
   line('FÉLIX : Il est derrière la porte. Je vois le sourire à travers la fente.');
   await sleep(1800);
@@ -536,7 +533,7 @@ async function ep9() {
   await sleep(800);
   line('FIN DE L’ENREGISTREMENT', 'big');
   await sleep(2000);
-  showMonster('rodeur');
+  
   scream(1.8); blast(); crunch(); bloodFlash();
   await sleep(1600);
   for (const x of ['NE BOUGEZ PLUS.', 'NE REGARDEZ PAS.', 'ELLE EST LÀ.']) {
